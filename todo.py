@@ -36,7 +36,9 @@ while True:
       print("\n------- Load Tasks -------")
 
     elif action == 7:
-      print("\n---------- Quit ----------")
+      print("\nThanks for using the To-Do List!")
+      print("Goodbye.\n")
+      break
 
     else:
       print("\nError: invalid input. Please enter a whole number between 1 and 7.")
