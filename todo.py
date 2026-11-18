@@ -1,5 +1,8 @@
 print("\nWelcome to the To-Do List!")
 
+# Initialize empty task list
+tasks = []
+
 # Validate menu action
 while True:
 
@@ -19,6 +22,17 @@ while True:
 
     if action == 1:
       print("\n-------- Add Task --------")
+
+      # Gather task info
+      completion_status = False
+      date = input("\nEnter task date (MM/DD/YYYY): ")
+      name = input("Enter task name: ")
+
+      # Add task info to the task list
+      task_info = {"completion_status": completion_status, "date": date, "name": name}
+      tasks.append(task_info)
+
+      print(f"\nSuccess! [{date} - {name}] has been added to the task list!")
 
     elif action == 2:
       print("\n----- Complete Task ------")
