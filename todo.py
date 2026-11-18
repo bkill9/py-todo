@@ -35,7 +35,27 @@ while True:
       print(f"\nSuccess! [{date} - {name}] has been added to the task list!")
 
     elif action == 2:
-      print("\n----- Complete Task ------")
+      print("\n----- Complete Task ------\n")
+
+      # Display task list so the user can select which one to complete
+      for i, task in enumerate(tasks):
+        completion_status = task["completion_status"]
+        date = task["date"]
+        name = task["name"]
+
+        # Use completion status to determine how the checkbox is displayed
+        if completion_status == True:
+          checkbox = "[X]"
+        else:
+          checkbox = "[ ]"
+
+        print(f"{i + 1}. {checkbox} {date} - {name}")
+
+        # Prompt user for which task to complete and then change status to True
+        task_to_complete = int(input("Enter task to complete: "))
+        index_to_complete = task_to_complete - 1
+
+        tasks[index_to_complete]["completion_status"] = True
 
     elif action == 3:
       print("\n------ Remove Task -------")
