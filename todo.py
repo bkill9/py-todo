@@ -66,7 +66,21 @@ while True:
       print("\n------ Remove Task -------")
 
     elif action == 4:
-      print("\n----- View All Tasks -----")
+      print("\n----- View All Tasks -----\n")
+
+      # Display task list
+      for i, task in enumerate(tasks):
+        completion_status = task["completion_status"]
+        date = task["date"]
+        name = task["name"]
+      
+        # Use completion status to determine how the checkbox is displayed
+        if completion_status == True:
+          checkbox = "[X]"
+        else:
+          checkbox = "[ ]"
+      
+        print(f"{i + 1}. {checkbox} {date} - {name}")
 
     elif action == 5:
       print("\n------- Save Tasks -------")
