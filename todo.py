@@ -63,7 +63,29 @@ while True:
       print(f"\nSuccess! [{date} - {name}] has been marked as complete.")
 
     elif action == 3:
-      print("\n------ Remove Task -------")
+      print("\n------ Remove Task -------\n")
+
+      # Display task list so the user can select which one to remove
+      for i, task in enumerate(tasks):
+        completion_status = task["completion_status"]
+        date = task["date"]
+        name = task["name"]
+      
+        # Use completion status to determine how the checkbox is displayed
+        if completion_status == True:
+          checkbox = "[X]"
+        else:
+          checkbox = "[ ]"
+      
+        print(f"{i + 1}. {checkbox} {date} - {name}")
+
+      # Prompt user for which task they'd like to remove
+      task_to_remove = int(input("\nEnter task to remove: "))
+      index_to_remove = task_to_remove - 1
+
+      removed_task = tasks.pop(index_to_remove)
+
+      print(f"\nSuccess! [{removed_task["date"]} - {removed_task["name"]}] has been removed from the task list.")
 
     elif action == 4:
       print("\n----- View All Tasks -----\n")
