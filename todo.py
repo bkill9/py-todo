@@ -32,7 +32,7 @@ while True:
       task_info = {"completion_status": completion_status, "date": date, "name": name}
       tasks.append(task_info)
 
-      print(f"\nSuccess! [{date} - {name}] has been added to the task list!")
+      print(f"\nSuccess! [{date} - {name}] has been added to the task list.")
 
     elif action == 2:
       print("\n----- Complete Task ------\n")
@@ -51,11 +51,16 @@ while True:
 
         print(f"{i + 1}. {checkbox} {date} - {name}")
 
-        # Prompt user for which task to complete and then change status to True
-        task_to_complete = int(input("Enter task to complete: "))
-        index_to_complete = task_to_complete - 1
+      # Prompt user for which task to complete and then change status to True
+      task_to_complete = int(input("\nEnter task to complete: "))
+      index_to_complete = task_to_complete - 1
 
-        tasks[index_to_complete]["completion_status"] = True
+      tasks[index_to_complete]["completion_status"] = True
+
+      date = tasks[index_to_complete]["date"]
+      name = tasks[index_to_complete]["name"]
+
+      print(f"\nSuccess! [{date} - {name}] has been marked as complete.")
 
     elif action == 3:
       print("\n------ Remove Task -------")
