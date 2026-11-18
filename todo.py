@@ -51,16 +51,25 @@ while True:
 
         print(f"{i + 1}. {checkbox} {date} - {name}")
 
-      # Prompt user for which task to complete and then change status to True
-      task_to_complete = int(input("\nEnter task to complete: "))
-      index_to_complete = task_to_complete - 1
+      # Ensure user's value is a number and within the list range
+      while True:
 
-      tasks[index_to_complete]["completion_status"] = True
+        try:
 
-      date = tasks[index_to_complete]["date"]
-      name = tasks[index_to_complete]["name"]
+          # Prompt user for which task to complete and then change status to True
+          task_to_complete = int(input("\nEnter task to complete: "))
+          index_to_complete = task_to_complete - 1
 
-      print(f"\nSuccess! [{date} - {name}] has been marked as complete.")
+          tasks[index_to_complete]["completion_status"] = True
+
+          date = tasks[index_to_complete]["date"]
+          name = tasks[index_to_complete]["name"]
+
+          print(f"\nSuccess! [{date} - {name}] has been marked as complete.")
+          break
+
+        except ValueError, IndexError:
+          print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
 
     elif action == 3:
       print("\n------ Remove Task -------\n")
@@ -120,3 +129,8 @@ while True:
 
   except ValueError:
     print("\nError: invalid input. Please enter a whole number between 1 and 7.")
+
+# TODO
+# Error handle index and value errors on complete and remove
+# Prevent the user from entering 0 or negative values on complete and remove
+# Display a message if the user tries to complete a task that is already completed and don't mark it as complete again
