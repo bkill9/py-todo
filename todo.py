@@ -88,13 +88,22 @@ while True:
       
         print(f"{i + 1}. {checkbox} {date} - {name}")
 
-      # Prompt user for which task they'd like to remove
-      task_to_remove = int(input("\nEnter task to remove: "))
-      index_to_remove = task_to_remove - 1
+      # Ensure user's value is a number and within the list range
+      while True:
 
-      removed_task = tasks.pop(index_to_remove)
+        try:
 
-      print(f"\nSuccess! [{removed_task["date"]} - {removed_task["name"]}] has been removed from the task list.")
+          # Prompt user for which task they'd like to remove
+          task_to_remove = int(input("\nEnter task to remove: "))
+          index_to_remove = task_to_remove - 1
+
+          removed_task = tasks.pop(index_to_remove)
+
+          print(f"\nSuccess! [{removed_task["date"]} - {removed_task["name"]}] has been removed from the task list.")
+          break
+
+        except ValueError, IndexError:
+          print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
 
     elif action == 4:
       print("\n----- View All Tasks -----\n")
