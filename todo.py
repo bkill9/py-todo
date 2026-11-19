@@ -23,11 +23,26 @@ while True:
     if action == 1:
       print("\n-------- Add Task --------")
 
-      # Gather task info
-      completion_status = False
-      date = input("\nEnter task date (MM/DD/YYYY): ")
-      name = input("Enter task name: ")
+      # Check valid date format and no empty value
+      while True:
+        date = input("\nEnter task date (MM/DD/YYYY): ")
 
+        if not date:
+          print("\nError: invalid input. Please enter a date (MM/DD/YYYY).")
+        else:
+          break
+
+      # Check name isn't empty
+      while True:
+        name = input("Enter task name: ")
+
+        if not name:
+          print("\nError: invalid input. Please enter a task name.\n")
+        else:
+          break
+
+      completion_status = False
+    
       # Add task info to the task list
       task_info = {"completion_status": completion_status, "date": date, "name": name}
       tasks.append(task_info)
@@ -163,7 +178,6 @@ while True:
     print("\nError: invalid input. Please enter a whole number between 1 and 7.")
 
 # TODO
-# Display a message if the user tries to complete a task that is already completed and don't mark it as complete again
 # Enforce date formatting (MM/DD/YYYY)
-# Prevent user's from entering past dates
-# Prevent user's from entering empty dates and empty task names
+# Prevent users from entering past dates
+# Prevent users from entering empty dates and empty task names
