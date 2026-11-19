@@ -37,98 +37,113 @@ while True:
     elif action == 2:
       print("\n----- Complete Task ------\n")
 
-      # Display task list so the user can select which one to complete
-      for i, task in enumerate(tasks):
-        completion_status = task["completion_status"]
-        date = task["date"]
-        name = task["name"]
+      # Display a message if the list is empty
+      if not tasks:
+        print("No tasks to display.")
+      else:
 
-        # Use completion status to determine how the checkbox is displayed
-        if completion_status == True:
-          checkbox = "[X]"
-        else:
-          checkbox = "[ ]"
+        # Display task list so the user can select which one to complete
+        for i, task in enumerate(tasks):
+          completion_status = task["completion_status"]
+          date = task["date"]
+          name = task["name"]
 
-        print(f"{i + 1}. {checkbox} {date} - {name}")
-
-      # Ensure user's value is a number and within the list range
-      while True:
-
-        try:
-
-          # Prompt user for which task to complete and then change status to True
-          task_to_complete = int(input("\nEnter task to complete: "))
-          index_to_complete = task_to_complete - 1
-
-          # Make sure index isn't negative
-          if index_to_complete > -1:
-            tasks[index_to_complete]["completion_status"] = True
-
-            date = tasks[index_to_complete]["date"]
-            name = tasks[index_to_complete]["name"]
-
-            print(f"\nSuccess! [{date} - {name}] has been marked as complete.")
-            break
+          # Use completion status to determine how the checkbox is displayed
+          if completion_status == True:
+            checkbox = "[X]"
           else:
-            print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
+            checkbox = "[ ]"
 
-        except ValueError, IndexError:
-          print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
+          print(f"{i + 1}. {checkbox} {date} - {name}")
+
+        # Ensure user's value is a number and within the list range
+        while True:
+
+          try:
+
+            # Prompt user for which task to complete and then change status to True
+            task_to_complete = int(input("\nEnter task to complete: "))
+            index_to_complete = task_to_complete - 1
+
+            # Make sure index isn't negative
+            if index_to_complete > -1:
+              tasks[index_to_complete]["completion_status"] = True
+
+              date = tasks[index_to_complete]["date"]
+              name = tasks[index_to_complete]["name"]
+
+              print(f"\nSuccess! [{date} - {name}] has been marked as complete.")
+              break
+            else:
+              print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
+
+          except ValueError, IndexError:
+            print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
 
     elif action == 3:
       print("\n------ Remove Task -------\n")
 
-      # Display task list so the user can select which one to remove
-      for i, task in enumerate(tasks):
-        completion_status = task["completion_status"]
-        date = task["date"]
-        name = task["name"]
-      
-        # Use completion status to determine how the checkbox is displayed
-        if completion_status == True:
-          checkbox = "[X]"
-        else:
-          checkbox = "[ ]"
-      
-        print(f"{i + 1}. {checkbox} {date} - {name}")
+      # Display a message if the list is empty
+      if not tasks:
+        print("No tasks to display.")
+      else:
 
-      # Ensure user's value is a number and within the list range
-      while True:
-
-        try:
-
-          # Prompt user for which task they'd like to remove
-          task_to_remove = int(input("\nEnter task to remove: "))
-          index_to_remove = task_to_remove - 1
-
-          # Make sure index isn't negative
-          if index_to_remove > -1:
-            removed_task = tasks.pop(index_to_remove)
-
-            print(f"\nSuccess! [{removed_task["date"]} - {removed_task["name"]}] has been removed from the task list.")
-            break
+        # Display task list so the user can select which one to remove
+        for i, task in enumerate(tasks):
+          completion_status = task["completion_status"]
+          date = task["date"]
+          name = task["name"]
+        
+          # Use completion status to determine how the checkbox is displayed
+          if completion_status == True:
+            checkbox = "[X]"
           else:
-            print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
+            checkbox = "[ ]"
+        
+          print(f"{i + 1}. {checkbox} {date} - {name}")
 
-        except ValueError, IndexError:
-          print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
+        # Ensure user's value is a number and within the list range
+        while True:
+
+          try:
+
+            # Prompt user for which task they'd like to remove
+            task_to_remove = int(input("\nEnter task to remove: "))
+            index_to_remove = task_to_remove - 1
+
+            # Make sure index isn't negative
+            if index_to_remove > -1:
+              removed_task = tasks.pop(index_to_remove)
+
+              print(f"\nSuccess! [{removed_task["date"]} - {removed_task["name"]}] has been removed from the task list.")
+              break
+            else:
+              print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
+
+          except ValueError, IndexError:
+            print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
 
     elif action == 4:
       print("\n----- View All Tasks -----\n")
 
-      # Display task list
-      for i, task in enumerate(tasks):
-        completion_status = task["completion_status"]
-        date = task["date"]
-        name = task["name"]
-      
-        # Use completion status to determine how the checkbox is displayed
-        if completion_status == True:
-          checkbox = "[X]"
-        else:
-          checkbox = "[ ]"
-      
-        print(f"{i + 1}. {checkbox} {date} - {name}")
+      # Display a message if the list is empty
+      if not tasks:
+        print("No tasks to display.")
+      else:
+
+        # Display task list
+        for i, task in enumerate(tasks):
+          completion_status = task["completion_status"]
+          date = task["date"]
+          name = task["name"]
+        
+          # Use completion status to determine how the checkbox is displayed
+          if completion_status == True:
+            checkbox = "[X]"
+          else:
+            checkbox = "[ ]"
+        
+          print(f"{i + 1}. {checkbox} {date} - {name}")
 
     elif action == 5:
       print("\n------- Save Tasks -------")
@@ -149,4 +164,6 @@ while True:
 
 # TODO
 # Display a message if the user tries to complete a task that is already completed and don't mark it as complete again
-# Display a message if the list is empty (complete, remove, view)
+# Enforce date formatting (MM/DD/YYYY)
+# Prevent user's from entering past dates
+# Prevent user's from entering empty dates and empty task names
