@@ -60,13 +60,17 @@ while True:
           task_to_complete = int(input("\nEnter task to complete: "))
           index_to_complete = task_to_complete - 1
 
-          tasks[index_to_complete]["completion_status"] = True
+          # Make sure index isn't negative
+          if index_to_complete > -1:
+            tasks[index_to_complete]["completion_status"] = True
 
-          date = tasks[index_to_complete]["date"]
-          name = tasks[index_to_complete]["name"]
+            date = tasks[index_to_complete]["date"]
+            name = tasks[index_to_complete]["name"]
 
-          print(f"\nSuccess! [{date} - {name}] has been marked as complete.")
-          break
+            print(f"\nSuccess! [{date} - {name}] has been marked as complete.")
+            break
+          else:
+            print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
 
         except ValueError, IndexError:
           print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
@@ -97,10 +101,14 @@ while True:
           task_to_remove = int(input("\nEnter task to remove: "))
           index_to_remove = task_to_remove - 1
 
-          removed_task = tasks.pop(index_to_remove)
+          # Make sure index isn't negative
+          if index_to_remove > -1:
+            removed_task = tasks.pop(index_to_remove)
 
-          print(f"\nSuccess! [{removed_task["date"]} - {removed_task["name"]}] has been removed from the task list.")
-          break
+            print(f"\nSuccess! [{removed_task["date"]} - {removed_task["name"]}] has been removed from the task list.")
+            break
+          else:
+            print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
 
         except ValueError, IndexError:
           print(f"\nError: invalid input. Please enter a number between 1 and {len(tasks)}.")
@@ -140,6 +148,5 @@ while True:
     print("\nError: invalid input. Please enter a whole number between 1 and 7.")
 
 # TODO
-# Error handle index and value errors on complete and remove
-# Prevent the user from entering 0 or negative values on complete and remove
 # Display a message if the user tries to complete a task that is already completed and don't mark it as complete again
+# Display a message if the list is empty (complete, remove, view)
