@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 
 print("\nWelcome to the To-Do List!")
 
@@ -178,6 +179,13 @@ while True:
     elif action == 5:
       print("\n------- Save Tasks -------")
 
+      filename = input("\nEnter json filename: ")
+
+      with open(filename, "w") as file:
+        json.dump(tasks, file, indent=4)
+
+      print(f"\nSuccess! Tasks saved to [{filename}].")
+
     elif action == 6:
       print("\n------- Load Tasks -------")
 
@@ -193,3 +201,6 @@ while True:
     print("\nError: invalid input. Please enter a whole number between 1 and 7.")
 
 # TODO
+# Enforce json files
+# No empty strings on save file input
+# Do not prompt for filename if task list is empty
