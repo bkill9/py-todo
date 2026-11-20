@@ -1,3 +1,5 @@
+from datetime import datetime
+
 print("\nWelcome to the To-Do List!")
 
 # Initialize empty task list
@@ -30,7 +32,15 @@ while True:
         if not date:
           print("\nError: invalid input. Please enter a date (MM/DD/YYYY).")
         else:
-          break
+
+          try:
+
+            # Validate mm/dd/yyyy date format
+            datetime.strptime(date, "%m/%d/%Y")
+            break
+
+          except ValueError:
+            print("\nError: invalid input. Please enter a valid date (MM/DD/YYYY).")
 
       # Check name isn't empty
       while True:
@@ -178,6 +188,4 @@ while True:
     print("\nError: invalid input. Please enter a whole number between 1 and 7.")
 
 # TODO
-# Enforce date formatting (MM/DD/YYYY)
 # Prevent users from entering past dates
-# Prevent users from entering empty dates and empty task names
