@@ -36,8 +36,13 @@ while True:
           try:
 
             # Validate mm/dd/yyyy date format
-            datetime.strptime(date, "%m/%d/%Y")
-            break
+            date_obj = datetime.strptime(date, "%m/%d/%Y")
+
+            # Check if date is in the past
+            if date_obj.date() >= datetime.now().date():
+              break
+            else:
+              print("\nError: invalid input. Please enter current or future date.")
 
           except ValueError:
             print("\nError: invalid input. Please enter a valid date (MM/DD/YYYY).")
@@ -188,4 +193,3 @@ while True:
     print("\nError: invalid input. Please enter a whole number between 1 and 7.")
 
 # TODO
-# Prevent users from entering past dates
