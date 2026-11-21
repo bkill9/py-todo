@@ -179,15 +179,24 @@ while True:
     elif action == 5:
       print("\n------- Save Tasks -------")
 
+      # Don't allow user to save if task list is empty
       if not tasks:
         print("\nTask list is empty. Please add tasks before saving.")
       else:
-        filename = input("\nEnter json filename: ")
 
-        with open(filename, "w") as file:
-          json.dump(tasks, file, indent=4)
+        # No empty strings and must enter a json file
+        while True:
 
-        print(f"\nSuccess! Tasks saved to [{filename}].")
+          filename = input("\nEnter json filename: ")
+
+          if not filename:
+            print("\nError: invalid input. Please enter a filename.")
+          else:
+            with open(filename, "w") as file:
+              json.dump(tasks, file, indent=4)
+
+            print(f"\nSuccess! Tasks saved to [{filename}].")
+            break
 
     elif action == 6:
       print("\n------- Load Tasks -------")
@@ -205,4 +214,3 @@ while True:
 
 # TODO
 # Enforce json files
-# No empty strings on save file input
