@@ -187,16 +187,20 @@ while True:
         # No empty strings and must enter a json file
         while True:
 
-          filename = input("\nEnter json filename: ")
+          filename = input("\nEnter json filename: ").lower()
 
           if not filename:
             print("\nError: invalid input. Please enter a filename.")
           else:
-            with open(filename, "w") as file:
-              json.dump(tasks, file, indent=4)
 
-            print(f"\nSuccess! Tasks saved to [{filename}].")
-            break
+            if filename.endswith(".json"):
+              with open(filename, "w") as file:
+                json.dump(tasks, file, indent=4)
+
+              print(f"\nSuccess! Tasks saved to [{filename}].")
+              break
+            else:
+              print("\nError: invalid input. Please enter a json filename.")
 
     elif action == 6:
       print("\n------- Load Tasks -------")
@@ -213,4 +217,3 @@ while True:
     print("\nError: invalid input. Please enter a whole number between 1 and 7.")
 
 # TODO
-# Enforce json files
